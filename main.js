@@ -12,3 +12,10 @@ const mockUpStrand = () => {
     }
     return newStrand
 }
+
+//Factory function to return object with number and random DNA string
+const pAequorFactory = (number, dnaArray) => {
+    return {specimenNum: number, dna: dnaArray};
+}
+
+//console.log(pAequorFactory(1, mockUpStrand()))
