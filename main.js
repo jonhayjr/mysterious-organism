@@ -50,6 +50,22 @@ const pAequorFactory = (number, dnaArray) => {
 
             //Return statement with details on percentage matched
             return `specimen #${pAequor.specimenNum} and specimen #${this.specimenNum} have ${percentMatched}% DNA in common.`;
+        },
+        willLikelySurvive() {
+            //Capture numberMatched
+            let numberMatched = 0;
+
+            //Loop through dna array and add one if value is either C or G
+            for (let i=0; i < this.dna.length; i++) {
+                if (this.dna[i] === 'C' || this.dna[i] === 'G') {
+                    numberMatched++;
+                }
+            }
+
+            //Calculate perfecentMatched based on numberMatched value and array length.  Rount to nearest decimal.
+            const percentageMatched = ((numberMatched/this.dna.length) * 100).toFixed();
+
+            return percentageMatched >= 60;
         }
     };
 }
@@ -59,4 +75,20 @@ const pAequorFactory = (number, dnaArray) => {
 const dnaObj2 = pAequorFactory(2, mockUpStrand());
 console.log(dnaObj1);
 console.log(dnaObj2);
-console.log(dnaObj1.compareDNA(dnaObj2));*/
+console.log(dnaObj1.compareDNA(dnaObj2));
+console.log(dnaObj2.willLikelySurvice());*/
+
+//Function to generate random dna objects
+const generateDNAArray = (number) => {
+    //Variable to store dnaArray values
+    const dnaArray = [];
+    //Loop through specified number of times and push random dnaObj to array
+    for (let i = 0; i < number; i++) {
+        const dnaObj = pAequorFactory(i + 1, mockUpStrand());
+        dnaArray.push(dnaObj);
+    }
+    return dnaArray;
+}
+
+const dnaArrayObject = generateDNAArray(30);
+//console.log(dnaArrayObject);
