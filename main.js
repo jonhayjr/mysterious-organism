@@ -66,17 +66,39 @@ const pAequorFactory = (number, dnaArray) => {
             const percentageMatched = ((numberMatched/this.dna.length) * 100).toFixed();
 
             return percentageMatched >= 60;
+        },
+        //Function that returns complementary DNA strang
+        complementStrand() {
+            //Array to store complementaryDNAStrand
+            const complementaryDNAStrand = [];
+
+            //Loop through dna array and push complementary base to array.
+            for (let i=0; i < this.dna.length; i++) {
+                if (this.dna[i] === 'A') {
+                    complementaryDNAStrand.push('T');
+                } else if (this.dna[i] === 'T') {
+                    complementaryDNAStrand.push('A');
+                } else if (this.dna[i] === 'C') {
+                    complementaryDNAStrand.push('G');
+                } else if (this.dna[i] === 'G') {
+                    complementaryDNAStrand.push('C');
+                } else {
+                    complementaryDNAStrand.push(this.dna[i]);
+                }
+            }
+            return complementaryDNAStrand;
         }
     };
 }
 
 /*Function testing*/
-/*const dnaObj1 = pAequorFactory(1, mockUpStrand());
-const dnaObj2 = pAequorFactory(2, mockUpStrand());
-console.log(dnaObj1);
-console.log(dnaObj2);
-console.log(dnaObj1.compareDNA(dnaObj2));
-console.log(dnaObj2.willLikelySurvice());*/
+//const dnaObj1 = pAequorFactory(1, mockUpStrand());
+//const dnaObj2 = pAequorFactory(2, mockUpStrand());
+//console.log(dnaObj1);
+//console.log(dnaObj2);
+//console.log(dnaObj1.compareDNA(dnaObj2));
+//console.log(dnaObj2.willLikelySurvice());
+console.log(dnaObj1.complementStrand());
 
 //Function to generate random dna objects
 const generateDNAArray = (number) => {
