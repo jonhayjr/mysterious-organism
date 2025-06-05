@@ -98,7 +98,7 @@ const pAequorFactory = (number, dnaArray) => {
 //console.log(dnaObj2);
 //console.log(dnaObj1.compareDNA(dnaObj2));
 //console.log(dnaObj2.willLikelySurvice());
-console.log(dnaObj1.complementStrand());
+//console.log(dnaObj1.complementStrand());
 
 //Function to generate random dna objects
 const generateDNAArray = (number) => {
