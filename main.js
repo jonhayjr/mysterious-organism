@@ -33,12 +33,30 @@ const pAequorFactory = (number, dnaArray) => {
             }
             //Update dna array with new base
             this.dna[randomNumber] = newBase;
+        },
+        compareDNA(pAequor) {
+            //Variable to capture number of bases that match
+            let numberMatched = 0;
+
+            //Loop through each array and find matches
+            for (let i=0; i < pAequor.dna.length; i++) {
+                //Add 1 to numberMatches if values match
+                if (pAequor.dna[i] === this.dna[i]) {
+                    numberMatched++;
+                }
+            }
+            //Calculate perfecentMatched based on numberMatched value and array length.  Rount to nearest decimal.
+            const percentMatched = ((numberMatched/pAequor.dna.length) * 100).toFixed();
+
+            //Return statement with details on percentage matched
+            return `specimen #${pAequor.specimenNum} and specimen #${this.specimenNum} have ${percentMatched}% DNA in common.`;
         }
     };
 }
 
-/*Mutate function testing*/
-/*const dnaObj = pAequorFactory(1, mockUpStrand());
-console.log(dnaObj);
-dnaObj.mutate();
-console.log(dnaObj);*/
+/*Function testing*/
+/*const dnaObj1 = pAequorFactory(1, mockUpStrand());
+const dnaObj2 = pAequorFactory(2, mockUpStrand());
+console.log(dnaObj1);
+console.log(dnaObj2);
+console.log(dnaObj1.compareDNA(dnaObj2));*/
