@@ -104,10 +104,22 @@ const pAequorFactory = (number, dnaArray) => {
 const generateDNAArray = (number) => {
     //Variable to store dnaArray values
     const dnaArray = [];
+
     //Loop through specified number of times and push random dnaObj to array
     for (let i = 0; i < number; i++) {
-        const dnaObj = pAequorFactory(i + 1, mockUpStrand());
-        dnaArray.push(dnaObj);
+        //Variable to capture specimen number
+        let specimenNumber = 0;
+        while(dnaArray.length < number) {
+            //Set specimenNumber equal to dnaArray length plus 1
+            specimenNumber = dnaArray.length + 1;
+            let dnaObj = pAequorFactory(specimenNumber, mockUpStrand());
+
+            //Only push DNA value to array if it will survive
+            if (dnaObj.willLikelySurvive()) {
+                dnaArray.push(dnaObj);
+            }
+        }
+
     }
     return dnaArray;
 }
